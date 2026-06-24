@@ -1,0 +1,18 @@
+{
+  "name": "commit-farmer",
+  "version": "1.0.1",
+  "description": "GitHub 잔디 자동 심기 CLI",
+  "bin": {
+    "commit-farmer": "index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "github",
+    "til",
+    "commit",
+    "잔디"
+  ],
+  "license": "MIT"
+}
