@@ -1,6 +1,6 @@
 {
   "name": "commit-farmer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "GitHub 잔디 자동 심기 CLI",
   "bin": {
     "commit-farmer": "index.js"
