@@ -74,7 +74,7 @@ jobs:
           git config user.email "${gitEmail}"
 
           DATE=$(date -u +"%Y-%m-%d" --date="9 hours")
-          LOG_FILE="logs/${DATE}.md"
+          LOG_FILE="logs/\${DATE}.md"
 
           mkdir -p logs
 
@@ -84,17 +84,17 @@ jobs:
             COMMIT_TIME=$(date -u +"%H:%M:%S" --date="9 hours")
 
             if [ "$i" -eq 1 ]; then
-              if [ ! -f "$LOG_FILE" ]; then
-                echo "# TIL - ${DATE}" > "$LOG_FILE"
-                echo "" >> "$LOG_FILE"
+              if [ ! -f "\$LOG_FILE" ]; then
+                echo "# TIL - \${DATE}" > "\$LOG_FILE"
+                echo "" >> "\$LOG_FILE"
               fi
-              echo "- ${COMMIT_TIME} 오늘도 꾸준히" >> "$LOG_FILE"
-              git add "$LOG_FILE"
-              git commit -m "docs: ${DATE} 기록 추가"
+              echo "- \${COMMIT_TIME} 오늘도 꾸준히" >> "\$LOG_FILE"
+              git add "\$LOG_FILE"
+              git commit -m "docs: \${DATE} 기록 추가"
             else
-              echo "<!-- updated: ${DATE} ${COMMIT_TIME} -->" >> README.md
+              echo "<!-- updated: \${DATE} \${COMMIT_TIME} -->" >> README.md
               git add README.md
-              git commit -m "chore: update ${DATE} ($i/$COUNT)"
+              git commit -m "chore: update \${DATE} ($i/$COUNT)"
             fi
 
             sleep $((RANDOM % 10 + 5))
