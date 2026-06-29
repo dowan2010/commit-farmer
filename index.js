@@ -57,6 +57,7 @@ function buildWorkflow(gitName, gitEmail) {
 on:
   schedule:
     - cron: '0 3 * * *'    # 매일 12:00 KST (= 03:00 UTC)
+    - cron: '0 6 * * *'    # 매일 15:00 KST (= 06:00 UTC) 재시도
   workflow_dispatch:
 
 jobs:
@@ -77,6 +78,11 @@ jobs:
           LOG_FILE="logs/\${DATE}.md"
 
           mkdir -p logs
+
+          if [ -f "\$LOG_FILE" ] && grep -q "오늘도 꾸준히" "\$LOG_FILE"; then
+            echo "오늘 이미 커밋됨. 스킵."
+            exit 0
+          fi
 
           COUNT=$((RANDOM % 5 + 2))
 
